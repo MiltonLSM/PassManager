@@ -1,0 +1,40 @@
+{% include "header.html" %}
+
+    <main class="form-login">
+        <h3 class="text-center my-5">Login</h2>
+
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p class="text-primary text-center">{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+        <form action="/login" method="POST">
+            
+            <div class="mb-3">
+                <label for="emailInput" class="form-label">Email</label>
+                <input type="email" class="form-control" id="emailInput" name="email_input">
+            </div>
+
+            <div class="mb-3">
+                <label for="passInput" class="form-label">Password</label>
+                <!-- <input type="password" class="form-control" id="passwordInput" name="password_input"> -->
+
+                <div class="input-group">
+                    <input type="password" class="form-control" id="passInput" name="password_input">
+                    <button type="button" class="btn btn-secondary btn-sm" id="viewInput" onclick="togglePassword(this)"><i class="bi bi-eye-fill" title="View"></i></button>
+                </div>
+            </div>
+            
+                <button class="w-100 btn btn-primary" type="submit">Login</button>
+            
+        </form>
+
+        <p class="text-secondary text-center small mt-5">Forgot your password?
+            <a href="{{ url_for('reset_password') }}" target="_blank">Click here</a>
+        </p>
+    </main>
+
+{% include "footer.html" %}

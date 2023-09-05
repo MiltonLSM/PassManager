@@ -1,0 +1,46 @@
+{% include "header.html" %}
+
+    <main class="form-signup">
+        <h3 class="text-center mt-5">Please sign up</h2>
+        <p class="mb-5 text-secondary text-center">Generate and store your passwords</p>
+
+        <form action="/signup" method="POST">
+
+            <div class="row">
+                <div class="mb-3 col">
+                    <label for="firstNameInput" class="form-label">First Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="firstNameInput" name="first_name_input" required>
+                </div>
+                <div class="mb-3 col">
+                    <label for="lastNameInput" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="lastNameInput" name="last_name_input">
+                </div>
+            </div>
+            
+            <div class="mb-3">
+                <label for="emailInput" class="form-label">Email <span class="text-danger">*</span></label>
+                <input type="email" class="form-control" id="emailInput" name="email_input" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="passwordInput" class="form-label">Password <span class="text-danger">*</span></label>
+                <!-- <input type="password" class="form-control" id="passwordInput" name="password_input" required> -->
+
+                <div class="input-group">
+                    <input type="password" class="form-control" id="passInput" name="password_input" required>
+                    <button type="button" class="btn btn-secondary btn-sm" id="viewInput" onclick="togglePassword(this)"><i class="bi bi-eye-fill" title="View"></i></button>
+                </div>
+            </div>
+
+            
+                <button class="w-100 btn btn-primary" type="submit">Sign up</button>
+            
+            
+
+        </form>
+        <p class="text-secondary text-center small mt-5">Already have an account?
+            <a href="{{ url_for('login') }}">Sign in</a>
+        </p>
+    </main>
+
+{% include "footer.html" %}

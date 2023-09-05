@@ -1,0 +1,22 @@
+{% include "header.html" %}
+
+    <main>
+        <div class="row">
+            <div class="container-intro col-md-6">
+                <h2 class="mb-4">Welcome to My Safe Spot!</h2>
+                <p>Here you can create and store your passwords in a safe way.</p>
+                <p class="mb-4">If you already have an account, please login to access your information. 
+                    If you do not have an account, please sign up to start using this site.
+                </p>
+                <a href="{{ url_for('login') }}"><button class="btn btn-primary" type="button">Login</button></a>
+                <a href="{{ url_for('signup') }}"><button class="btn btn-dark" type="button">Sign up</button></a>
+                
+            </div>
+
+            <!-- <div class="container-img col-md-6">
+                <img src="static/images/lock-img.jpg" alt="lock-img" class="lock-img">
+            </div> -->
+        </div>
+    </main>
+
+{% include "footer.html" %}

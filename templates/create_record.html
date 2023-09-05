@@ -1,0 +1,89 @@
+{% include "header.html" %}
+
+    <main class="form-credentials">
+
+        {% if editing %}
+
+        <h3 class="text-center my-5">Edit credential</h3>
+
+        <form action="{{ url_for('edit_record', record_id=record._id) }}" method="POST">
+
+            <div class="mb-3">
+                <label for="nameInput" class="form-label">Name <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="nameInput" name="name_input" value="{{ record.name }}" required>
+            </div>
+            
+            <div class="mb-3">
+                <label for="usernameInput" class="form-label">Username <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="usernameInput" name="username_input" value="{{ record.username}}" required>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-7">
+                    <label for="passInput" class="form-label">Password <span class="text-danger">*</span></label>
+                    <!-- <input type="text" class="form-control" id="passwordInput" name="password_input" value="{{ record.password }}" required>   -->
+
+                    <div class="input-group">
+                        <input type="password" class="form-control" id="passInput" name="password_input" value="{{ record.password }}" aria-describedby="view{{ record._id }}" required>
+                        <button type="button" class="btn btn-primary btn-sm" id="viewInput" onclick="togglePassword(this)"><i class="bi bi-eye-fill" title="View"></i></button>
+                    </div>
+
+                </div>
+
+                <div class="col-5 d-flex align-items-end justify-content-end">
+                    <button class="btn btn-secondary" type="button" onclick="fillPassInput()">Change password</button>
+                </div>
+            </div>
+            
+            <button class="w-100 btn btn-primary mb-2" type="submit">Save changes</button>
+            <a href="{{ url_for('my_records') }}"><button class="w-100 btn btn-dark" type="button">Cancel</button></a>
+            
+        </form>
+
+        {% else %}
+
+        <h3 class="text-center my-5">Create new credential</h3>
+        
+        <form action="/new-record" method="POST">
+
+            <div class="mb-3">
+                <label for="nameInput" class="form-label">Name <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="nameInput" name="name_input" required>
+            </div>
+            
+            <div class="mb-3">
+                <label for="usernameInput" class="form-label">Username <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="usernameInput" name="username_input" required>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-7">
+                    <label for="passInput" class="form-label">Password <span class="text-danger">*</span></label>
+                    <!-- <input type="password" class="form-control" id="passwordInput" name="password_input" required> -->
+
+                    <div class="input-group">
+                        <input type="password" class="form-control" id="passInput" name="password_input" required>
+                        <button type="button" class="btn btn-primary btn-sm" id="viewInput" onclick="togglePassword(this)"><i class="bi bi-eye-fill" title="View"></i></button>
+                    </div>
+
+                </div>
+
+                <div class="col-5 d-flex align-items-end justify-content-end">
+                    <button class="btn btn-secondary" type="button" onclick="fillPassInput()">Generate password</button>
+                </div>
+            </div>
+            
+            
+            <button class="w-100 btn btn-primary mb-2" type="submit">Save</button>  
+            <a href="{{ url_for('my_records') }}"><button class="w-100 btn btn-dark" type="button">Cancel</button></a>
+                
+            
+           
+            
+        </form>
+
+        {% endif %}
+
+    </main>
+
+{% include "footer.html" %}
