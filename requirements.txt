@@ -2,7 +2,7 @@ blinker==1.6.2
 click==8.1.7
 colorama==0.4.6
 dnspython==2.3.0
-flask==2.3.3
+flask==2.2.5
 Flask-Login==0.6.2
 gunicorn==21.2.0
 importlib-metadata==6.8.0
