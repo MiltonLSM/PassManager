@@ -60,11 +60,19 @@ def load_user(user_id):
 
 #****************** CONNECT WITH MONGO CLIENT *******************#
 
-client = MongoClient()
+db_password = os.environ.get("DB_PASSWORD")
+uri = "mongodb+srv://projectsmiltonix:<" + db_password + ">@cluster0.970wx6j.mongodb.net/?retryWrites=true&w=majority"
+
+client = MongoClient(uri)
 db = client['passManagerDB'] #another option is client.userDB
 users_col = db['users'] #another option is db.users
 credentials_col = db.credentials
 
+try:
+    client.admin.command('ping')
+    print("Pinged your deployment. You successfully connected to MongoDB!")
+except Exception as e:
+    print(e)
 
 #****************** FUNCTIONS *******************#
 
@@ -273,4 +281,4 @@ def update_user(token):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
