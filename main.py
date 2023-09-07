@@ -60,10 +60,10 @@ def load_user(user_id):
 
 #****************** CONNECT WITH MONGO CLIENT *******************#
 
-db_password = os.environ.get("DB_PASSWORD")
-uri = "mongodb+srv://projectsmiltonix:" + db_password + "@cluster0.970wx6j.mongodb.net/?retryWrites=true&w=majority"
+# db_password = os.environ.get("DB_PASSWORD")
+# uri = "mongodb+srv://projectsmiltonix:" + db_password + "@cluster0.970wx6j.mongodb.net/?retryWrites=true&w=majority"
 
-client = MongoClient(uri)
+client = MongoClient(os.environ.get("DB_URI"))
 db = client['passManagerDB'] #another option is client.userDB
 users_col = db['users'] #another option is db.users
 credentials_col = db.credentials
